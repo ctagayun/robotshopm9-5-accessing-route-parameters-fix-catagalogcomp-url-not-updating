@@ -45,7 +45,13 @@ export class CatalogComponent {
     //CatalogComponent is already LOADED. When you link to a component the CatalogComponent
     //will not reload. Which means smapshot is STALE. Since the component is not
     //re-loaded the ngInit is also not executed
-    this.filter = this.route.snapshot.params['filter'];
+    //this.filter = this.route.snapshot.params['filter'];
+
+    //To fix it. So when a new "params" published call the anonymous function
+    this.route.params.subscribe((params => {
+      this.filter = params['filter'] ?? ''; //if filter is not provided, set to empty string
+    }))
+
   }
 
   //next call navigate method

@@ -387,7 +387,13 @@ Module 9: Routing and Navigating with Angular
 
    - robotshopm9-5-accessing-route-parameters-fix-catagalogcomp-url-not-updating
    fixes THE URL IS NOT CHANGING:
-      
+      - Modify ngInit in CatalogComponent. To fix it do a subscribe
+
+         this.route.params.subscribe((params => {
+          this.filter = params['filter'] ?? '';
+         }))
+
+
 
 Module10: Creating Angular Forms
 
