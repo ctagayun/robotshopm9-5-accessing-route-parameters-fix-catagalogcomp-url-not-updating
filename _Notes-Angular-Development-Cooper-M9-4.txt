@@ -393,6 +393,29 @@ Module 9: Routing and Navigating with Angular
           this.filter = params['filter'] ?? '';
          }))
 
+   - Accessing Query Strings
+      - https://app.pluralsight.com/ilx/video-courses/d5d30ea4-0af1-447a-b13a-e60a095337a6/189d8f2f-edfe-4789-ab95-904092e47770/d884670d-592a-4413-9f62-38610f6bfde4
+
+      - in this lesson we will learn to use Query String Parameters. Example:
+          Instead of using
+            <a routerLink="/catalog/Heads"  class="part">
+          We will use queryParams like this:
+            <a routerLink="/catalog" [queryParams] = "{filter: 'Heads'}" class="part">
+
+          Explanation:
+           [queryParams] = "{filter: 'Heads'} - this adds a filter property with value of "Heads"
+      - next go to CaalogComponrnt.html and fix it like this:
+          <a routerLink="/catalog" [queryParams]="{filter: 'Heads'}"  class="button"> Heads</a>
+
+      - now that all of the links are updated, we just need to update our CatalogComponent
+      to read the queryParams:
+
+         this.route.queryParams.subscribe((params => {
+          this.filter = params['filter'] ?? ''; //if filter is not provided, set to empty string
+        }))
+
+      - lastly go to AppRoutingModule and remove "filter" from this path:
+           {path: 'catalog/:filter', component: CatalogComponent, title: "Catalog - Robot Shop"},
 
 
 Module10: Creating Angular Forms

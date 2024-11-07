@@ -48,7 +48,11 @@ export class CatalogComponent {
     //this.filter = this.route.snapshot.params['filter'];
 
     //To fix it. So when a new "params" published call the anonymous function
-    this.route.params.subscribe((params => {
+    // this.route.params.subscribe((params => {
+    //   this.filter = params['filter'] ?? ''; //if filter is not provided, set to empty string
+    // }))
+
+    this.route.queryParams.subscribe((params => {
       this.filter = params['filter'] ?? ''; //if filter is not provided, set to empty string
     }))
 
